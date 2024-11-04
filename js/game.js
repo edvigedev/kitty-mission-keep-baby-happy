@@ -22,9 +22,11 @@ class Game {
             50: The initial y position of the player.
             "../images/sashi.png": The file path for the player’s image 
             (in this case, an image of Sashi). */
-        this.player = null;
-
-        // this.player = new Player(380, 50, "../images/sashi.png");
+        this.player = new Player(
+          "/kitty-mission-keep-baby-happy/images/sashi.png",
+          50,
+          380
+        );
         /* we do not put px to have the ability to change
           the unit of measurement later.*/
 
@@ -33,8 +35,8 @@ class Game {
             for collision detection, player boundaries, and obstacle movement 
             within the game.*/
 
-        this.height = window.innerHeight;
-        this.width = window.innerWidth;
+        // this.height = window.innerHeight;
+        // this.width = window.innerWidth;
 
         /*This array stores obstacles in the game. Here, it starts with one obstacle created 
             by new Obstacle(this.gameScreen), where this.gameScreen provides a reference to the 
@@ -70,10 +72,10 @@ class Game {
     }
 
     start() {
-        window.addEventListener("resize", () => {
-            this.gameScreen.style.height = `${window.innerHeight}px`;
-            this.gameScreen.style.width = `${window.innerWidth}px`;
-        });
+        // window.addEventListener("resize", () => {
+        //     this.gameScreen.style.height = `${window.innerHeight}px`;
+        //     this.gameScreen.style.width = `${window.innerWidth}px`;
+        // });
 
 
         //hide the start-screen
@@ -100,7 +102,7 @@ class Game {
     gameLoop() {
         // console.log('this is a game loop');
         this.frames++
-        this.update();
+        // this.update();
         // if gameover is true, we call the gameOver() method
         this.player.move();
         if (this.isGameover) {
