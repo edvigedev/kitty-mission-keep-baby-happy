@@ -53,6 +53,20 @@ body {
   justify-content: center;
 }
 
+#game-screen {
+   background-image: url('/kitty-mission-keep-baby-happy/images/play_background.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
 #stats {
     display: none;
     font-family: inherit;
