@@ -53,6 +53,12 @@ body {
   justify-content: center;
 }
 
+#stats {
+    display: none;
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 1rem;}
+
 #game-screen {
   display: none;
   align-content: center;
