@@ -4,7 +4,7 @@ body {
   text-align: center;
 }
 
-.start-screen {
+#start-screen {
     background-image: url('/kitty-mission-keep-baby-happy/images/start_background.png');
     background-position: center;
     background-size: cover;
