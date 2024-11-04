@@ -1,0 +1,22 @@
+body {
+  padding: 0;
+  text-align: center;
+}
+
+.start-page {
+    background-image: url('/kitty-mission-keep-baby-happy/images/start_background.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    position: relative;
+}
+
+#logo img{
+   position: relative;
+    top: 20px; 
+    text-align: center;
+}
