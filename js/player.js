@@ -88,26 +88,4 @@ class Player {
   }
 }
 
-//to prevent the cat from going too far left
-// if (this.left < 30) {
-//   this.left = 30;
-// }
-// // to prevent the cat from going too far right
-// if (this.left + this.width > 3000) {
-//   this.left = 3000 - this.width;
-// }
-// // to prevent the cat from going too far up
-// if (this.top < 0) {
-//   this.top = 0;
-// }
 
-// // to prevent the cat from going too far down
-// if (this.top + this.height > 2000) {
-//   this.top = 2000 - this.height;
-// }
-
-//so far nothing is keeping the player on the screen
-//I need a conditional
-
-// if (this.left === 30) {
-//

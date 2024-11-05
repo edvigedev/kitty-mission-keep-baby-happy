@@ -47,6 +47,7 @@ window.onload = function () {
     document.getElementById("start-screen").style.display = "none";
     document.getElementById("game-screen").style.display = "flex";
     document.getElementById("end-screen").style.display = "none";
+    document.getElementById("stats").style.display = "flex";
   }
 
   function restartGame() {

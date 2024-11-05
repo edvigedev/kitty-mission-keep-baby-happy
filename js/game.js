@@ -14,8 +14,6 @@ class Game {
     this.endScreen = document.getElementById("end-screen");
     this.scoreElement = document.getElementById("score");
     this.livesElement = document.getElementById("lives");
-    this.finalScoreElement = document.getElementById("final-score");
-    this.finalLivesElement = document.getElementById("final-lives");
 
     /*Initialise the  player
                 This initializes the player object using the Player class. 
@@ -133,6 +131,7 @@ class Game {
       const didHitSashi = this.player.didCollide(oneObstacle);
       //if the obstacle hits Sashi, substracts a life, remove obstacle from array and remove from the DOM
       if (didHitSashi) {
+        console.log("Collision with obstacle detected");
         // - 1 life
         this.lives--;
         //update the lives DOM to the new value
@@ -159,6 +158,7 @@ class Game {
       const didHitSashi = this.player.didCollide(oneTreat);
       //if the obstacle hits Sashi, substracts a life, remove obstacle from array and remove from the DOM
       if (didHitSashi) {
+        console.log("Collision with treat detected");
         // - 1 life
         this.score++;
         //update the lives DOM to the new value
@@ -171,11 +171,14 @@ class Game {
     });
   }
   gameOver() {
+    console.log("Game Over triggered");
+    console.log("Final Score:", this.score);
+    console.log("Final Lives:", this.lives);
     this.gameScreen.style.display = "none";
     this.endScreen.style.display = "flex";
     // Display the final score and lives on the end screen
-    this.finalScoreElement.innerText = this.score;
-    this.finalLivesElement.innerText = this.lives;
+    this.scoreElement.innerText = this.score;
+    this.livesElement.innerText = this.lives;
   }
 }
 
