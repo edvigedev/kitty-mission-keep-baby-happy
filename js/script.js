@@ -14,7 +14,7 @@ window.onload = function () {
 }
 
 function startGame() {
-    console.log("start game");
+    // console.log("start game");
     //this has to be made global
     let myGame = new Game();
     myGame.start();

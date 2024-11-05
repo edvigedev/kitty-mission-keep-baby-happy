@@ -1,7 +1,6 @@
-class Obstacle {
+class Treat {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    //You want the position to be more to the left, 70px, than the right, 230px
     this.position = [
       70, 500, 400, 230, 100, 30, 1500, 800, 1200, 140, 2300, 2500, 3000,
     ];
@@ -13,9 +12,11 @@ class Obstacle {
 
     //Array of image paths for different obstacle images
     const images = [
-      "/kitty-mission-keep-baby-happy/images/panettone.png",
-      "/kitty-mission-keep-baby-happy/images/coffee.png",
-      "/kitty-mission-keep-baby-happy/images/chocolate.png",
+      "/kitty-mission-keep-baby-happy/images/tuna.png",
+      "/kitty-mission-keep-baby-happy/images/toy_blue.png",
+      "/kitty-mission-keep-baby-happy/images/fish_toy2.png",
+      "/kitty-mission-keep-baby-happy/images/fish_toy1.png",
+      "/kitty-mission-keep-baby-happy/images/heart.png",
     ];
     // Select a random image for the obstacle
     const randomImageIndex = Math.floor(Math.random() * images.length);
@@ -45,7 +46,6 @@ class Obstacle {
   updatePosition() {
     this.element.style.top = `${this.top}px`;
   }
-  isOutofScreen() {
-    return this.left > this.gameScreen.clientWidth;
-  }
+  // Check if the obstacle has moved out of the screen
+  
 }
