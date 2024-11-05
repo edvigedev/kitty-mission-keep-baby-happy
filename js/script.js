@@ -10,7 +10,7 @@ window.onload = function () {
   const restartBtn = document.getElementById("restart-button");
 
   restartBtn.addEventListener("click", () => {
-    window.location.reload();
+    restartGame();
   });
 
   startBtn.addEventListener("click", function () {
@@ -43,5 +43,26 @@ window.onload = function () {
     //this has to be made global
     myGame = new Game();
     myGame.start();
+    //manage the screens
+    document.getElementById("start-screen").style.display = "none";
+    document.getElementById("game-screen").style.display = "flex";
+    document.getElementById("end-screen").style.display = "none";
+  }
+
+  function restartGame() {
+    clearGameScreen(); // Clear game screen
+
+    // Reset screens
+    document.getElementById("start-screen").style.display = "none";
+    document.getElementById("game-screen").style.display = "flex";
+    document.getElementById("end-screen").style.display = "none";
+
+    // Reset and start a new game
+    myGame = new Game();
+    myGame.start();
+  }
+  function clearGameScreen() {
+    const gameScreen = document.getElementById("game-screen");
+    gameScreen.innerHTML = ""; // Clear all child elements
   }
 };
