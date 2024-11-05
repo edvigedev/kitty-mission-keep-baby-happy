@@ -5,21 +5,22 @@ the method move() moves the player in JS, and it is called in game.js
 updatePosition() is what moves the player on the screen */
 
 class Player {
-  constructor(playerImage, top, left) {
+  constructor(top, left) {
     this.gameScreen = document.getElementById("game-screen");
+    //where do you want the player to be positioned
     this.top = top;
     this.left = left;
-    //leave them out as they will always be the same
+    //leave width and height out as they will always be the same
     this.width = 240;
     this.height = 200;
     //we need the variables direction x and direction y for directions
-    this.directionX = 0; // left right
-    this.directionY = 0; // up and down
+    this.directionX = 0; // controls Sashi moving left right
+    this.directionY = 0; // constrols Sashi moving up and down
     //this is the players' picture, aka the car
     this.element = document.createElement("img");
     //.src adds the path to the image, since it is an argument we can
-    //change it, aka different cars every time the game starts
-    this.element.src = playerImage;
+    this.element.src = "/kitty-mission-keep-baby-happy/images/sashi.png";
+    //position of Sashi
     this.element.style.position = "absolute";
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
@@ -45,22 +46,22 @@ class Player {
       from moving outside specific screen boundaries.*/
 
     // to prevent the cat from going too far left
-    if (this.left < 30) {
-      this.left = 30;
-    }
-    // to prevent the cat from going too far right
-    if (this.left + this.width > 365) {
-      this.left = 365 - this.width;
-    }
-    // to prevent the cat from going too far up
-    if (this.top < 0) {
-      this.top = 0;
-    }
+    // if (this.left === 30) {
+    //   this.left = 30;
+    // }
+    // // to prevent the cat from going too far right
+    // if (this.left + this.width > 365) {
+    //   this.left = 365 - this.width;
+    // }
+    // // to prevent the cat from going too far up
+    // if (this.top < 0) {
+    //   this.top = 0;
+    // }
 
-    // to prevent the cat from going too far down
-    if (this.top + this.height > 600) {
-      this.top = 600 - this.height;
-    }
+    // // to prevent the cat from going too far down
+    // if (this.top + this.height > 600) {
+    //   this.top = 600 - this.height;
+    // }
 
     this.updatePosition();
 

@@ -22,11 +22,7 @@ class Game {
             50: The initial y position of the player.
             "../images/sashi.png": The file path for the player’s image 
             (in this case, an image of Sashi). */
-    this.player = new Player(
-      "/kitty-mission-keep-baby-happy/images/sashi.png",
-      1000,
-      -5
-    );
+    this.player = new Player(1200, 500);
     /* we do not put px to have the ability to change
           the unit of measurement later.*/
 
@@ -82,8 +78,6 @@ class Game {
     this.startScreen.style.display = "none";
     //
     this.gameScreen.style.display = "flex";
-    this.score = 0;
-    this.lives = 3;
     this.isGameover = false;
     this.frames = 0;
 
@@ -101,8 +95,9 @@ class Game {
   gameLoop() {
     // console.log('this is a game loop');
     this.frames++;
-    this.updateObstacle();
-    this.updateTreat();
+    this.update()
+    // this.updateObstacle();
+    // this.updateTreat();
 
     if (this.frames % 100 === 0) {
       const newObstacle = new Obstacle(this.gameScreen);
@@ -120,6 +115,12 @@ class Game {
       this.isGameover();
     }
   }
+    
+    update() {
+        //this calls the move() method from the player class.
+        this.player.move();
+    }
+    
   // this calls the move method from the player class
   updateObstacle() {
     this.obstacles.move();
