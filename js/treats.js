@@ -16,7 +16,7 @@ class Treat {
     //Array of image paths for different obstacle images
     const images = [
       "/kitty-mission-keep-baby-happy/images/toy_blue.png",
-      "/kitty-mission-keep-baby-happy/images/tuna.png",
+      "/kitty-mission-keep-baby-happy/images/heart.png",
       "/kitty-mission-keep-baby-happy/images/fish_toy1.png",
     ];
     // Select a random image for the obstacle

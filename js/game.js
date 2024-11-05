@@ -14,6 +14,8 @@ class Game {
     this.endScreen = document.getElementById("end-screen");
     this.scoreElement = document.getElementById("score");
     this.livesElement = document.getElementById("lives");
+    this.finalScoreElement = document.getElementById("final-score");
+    this.finalLivesElement = document.getElementById("final-lives");
 
     /*Initialise the  player
                 This initializes the player object using the Player class. 
@@ -38,7 +40,7 @@ class Game {
                 by new Obstacle(this.gameScreen), where this.gameScreen provides a reference to the 
                 game screen where obstacles will appear.*/
     this.obstacles = [new Obstacle()];
-    this.treats = [];
+    this.treats = [new Treat()];
     // this.obstacles = [new Obstacle(this.gameScreen)];
 
     /*These properties keep track of the player’s score and remaining lives.
@@ -108,6 +110,10 @@ class Game {
     if (this.frames % 180 === 0) {
       this.obstacles.push(new Obstacle());
     }
+
+    if (this.frames % 120 === 0) {
+      this.treats.push(new Treat());
+    }
   }
 
   update() {
@@ -140,10 +146,36 @@ class Game {
         }
       }
     });
+    this.treats.forEach((oneTreat, oneTreatIndex) => {
+      oneTreat.move();
+      //check that the obstacle passes the bottom, then remove it from the array and DOM
+      if (oneTreat.top > this.gameScreen.clientHeight) {
+        //splice removes objects from the array
+        this.treats.splice(oneTreatIndex, 1);
+        //the remove() method removes the obstacle from the game screen
+        oneTreat.element.remove();
+      }
+      //this checks each oneObstacle if it collided with my player, it returns true or false
+      const didHitSashi = this.player.didCollide(oneTreat);
+      //if the obstacle hits Sashi, substracts a life, remove obstacle from array and remove from the DOM
+      if (didHitSashi) {
+        // - 1 life
+        this.score++;
+        //update the lives DOM to the new value
+        this.scoreElement.innerText = this.score;
+        //splice the obstacle out of the array
+        this.treats.splice(oneTreatIndex, 1);
+        oneTreat.element.remove();
+        // End the game if lives reach zero
+      }
+    });
   }
   gameOver() {
     this.gameScreen.style.display = "none";
     this.endScreen.style.display = "flex";
+    // Display the final score and lives on the end screen
+    this.finalScoreElement.innerText = this.score;
+    this.finalLivesElement.innerText = this.lives;
   }
 }
 

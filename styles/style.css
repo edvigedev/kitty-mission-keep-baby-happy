@@ -44,12 +44,12 @@ body {
   margin-bottom: 20px;
 }
 
-#game-container {
+/* #game-container {
   display: flex;
   width: 100vw;
   padding: 20px 0px;
-  justify-content: center;
-}
+  justify-content: center; }*/
+
 
 #game-screen {
   background-image: url("/kitty-mission-keep-baby-happy/images/play_background.webp");
@@ -58,7 +58,7 @@ body {
   background-repeat: no-repeat;
   height: 100vh; /* Full viewport height */
   width: 100vw;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -67,11 +67,43 @@ body {
 }
 
 #stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgb(4, 97, 113);
+  padding: 40px;
+  border-radius: 20px;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.final-stats {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgb(4, 97, 113);
+  padding: 10px;
+  border-radius: 20px;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* #stats {
   display: none;
   font-family: inherit;
   font-weight: normal;
   font-size: 1rem;
-}
+} */
 
 #end-screen {
   background-image: url("/kitty-mission-keep-baby-happy/images/end_background.webp");
@@ -80,12 +112,21 @@ body {
   background-repeat: no-repeat;
   height: 100vh; /* Full viewport height */
   width: 100vw;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+#end-screen h1 {
+  font-size: 4rem;
+  color: #1a4d4f; /* Dark teal for contrast */
+  font-weight: bold;
+  font-family: "Helvetica", sans-serif;
+  margin-bottom: 3%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 #restart-button {
@@ -103,9 +144,16 @@ body {
   margin: 10px 0;
 }
 
-#start-button:hover {
-  background-color: #84faaf; /* Blue on hover */
+#restart-button:hover {
+  background-color: #9ee3f9; /* Blue on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
+#baby-image-end {
+  position: absolute;
+  width: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40%;
+}
