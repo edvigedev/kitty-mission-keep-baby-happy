@@ -1,7 +1,8 @@
 body {
-  padding: 0;
   font-family: "Helvetica", sans-serif;
   text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 #start-screen {
@@ -72,7 +73,39 @@ body {
   font-size: 1rem;
 }
 
-
 #end-screen {
-  display: none;
+  background-image: url("/kitty-mission-keep-baby-happy/images/end_background.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh; /* Full viewport height */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
+
+#restart-button {
+  background-color: #eeedc5;
+  border: none;
+  color: rgb(4, 97, 113);
+  padding: 20px 40px;
+  border-radius: 40px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: "Helvetica", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px 0;
+}
+
+#start-button:hover {
+  background-color: #84faaf; /* Blue on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+

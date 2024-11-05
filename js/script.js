@@ -7,6 +7,11 @@ window.onload = function () {
   //declared globally to allow the start of the game
 
   const startBtn = document.getElementById("start-button");
+  const restartBtn = document.getElementById("restart-button");
+
+  restartBtn.addEventListener("click", () => {
+    window.location.reload();
+  });
 
   startBtn.addEventListener("click", function () {
     startGame();
@@ -15,16 +20,16 @@ window.onload = function () {
   //keydown for listening to keyboard
   document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowRight") {
-      myGame.player.directionX = 2;
+      myGame.player.directionX = 3;
     }
     if (event.code === "ArrowLeft") {
-      myGame.player.directionX = -2;
+      myGame.player.directionX = -3;
     }
     if (event.code === "ArrowUp") {
-      myGame.player.directionY = -2;
+      myGame.player.directionY = -3;
     }
     if (event.code === "ArrowDown") {
-      myGame.player.directionY = 2;
+      myGame.player.directionY = 3;
     }
   });
   //keyup for listening to keyboard

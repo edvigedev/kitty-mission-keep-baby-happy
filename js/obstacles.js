@@ -1,15 +1,17 @@
 class Obstacle {
-  constructor(gameScreen) {
-    this.gameScreen = gameScreen;
-    //You want the position to be more to the left, 70px, than the right, 230px
-    this.position = [
-      70, 500, 400, 230, 100, 30, 1500, 800, 1200, 140, 2300, 2500, 3000,
-    ];
-    this.randomIndex = math.floor(Math.random() * this.position.length);
-    this.left = this.position[this.randomIndex];
-    this.top = 50;
+  constructor() {
+    this.gameScreen = document.getElementById("game-screen");
+
+    // Define width and height for the obstacle
     this.width = 180;
     this.height = 150;
+
+    // Set the initial position at the top of the screen
+    this.top = -200; // Start dropping from the top, smoothly
+
+    // Dynamically set the left position based on the screen width
+    const screenWidth = this.gameScreen.clientWidth;
+    this.left = Math.floor(Math.random() * (screenWidth - this.width)); // Random position across screen width
 
     //Array of image paths for different obstacle images
     const images = [
@@ -38,7 +40,7 @@ class Obstacle {
   // it does not have directionX or directionY, only falls down
   move() {
     //this is non-responsive to keyboard and it always has to be falling.
-    this.top += 2;
+    this.top += 3;
     this.updatePosition();
   }
 
