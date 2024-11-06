@@ -117,6 +117,7 @@ class Game {
   update() {
     //this calls the move() method from the player class.
     this.player.move();
+
     //this calls the move method on each obstacle
     this.obstacles.forEach((oneObstacle, oneObstacleIndex) => {
       oneObstacle.move();
@@ -145,31 +146,45 @@ class Game {
         }
       }
     });
+
     this.treats.forEach((oneTreat, oneTreatIndex) => {
       oneTreat.move();
-      //check that the obstacle passes the bottom, then remove it from the array and DOM
+      //check that the treat passes the bottom, then remove it from the array and DOM
       if (oneTreat.top > this.gameScreen.clientHeight) {
         //splice removes objects from the array
         this.treats.splice(oneTreatIndex, 1);
-        //the remove() method removes the obstacle from the game screen
+        //the remove() method removes the treat from the game screen
         oneTreat.element.remove();
       }
-      //this checks each oneObstacle if it collided with my player, it returns true or false
-      const didHitSashi = this.player.didCollide(oneTreat);
-      //if the obstacle hits Sashi, substracts a life, remove obstacle from array and remove from the DOM
-      if (didHitSashi) {
-        console.log("Collision with treat detected");
-        // - 1 life
-        this.score++;
-        //update the lives DOM to the new value
-        this.scoreElement.innerText = this.score;
-        //splice the obstacle out of the array
-        this.treats.splice(oneTreatIndex, 1);
-        oneTreat.element.remove();
-        // End the game if lives reach zero
+      //this checks each oneTreat if it collided with my player, it returns true or false
+      const treatHitSashi = this.player.didCollide(oneTreat);
+
+      //set the super treat
+      const isSpecialTreat = oneTreat.element.src.includes("happy_baby.png");
+      //if the obstacle hits Sashi, add a score point, remove the treat from the array and
+      //remove the treat from the DOM
+      if (treatHitSashi) {
+        if (isSpecialTreat) {
+          console.log("Collision with treat detected");
+          this.lives += 1;
+          this.livesElement.innerText = this.lives;
+          this.treats.splice(oneTreatIndex, 1);
+          oneTreat.element.remove();
+        } else {
+          console.log("Collision with treat detected");
+          // - 1 life
+          this.score++;
+          //update the score DOM to the new value
+          this.scoreElement.innerText = this.score;
+          //splice the treat out of the array
+          this.treats.splice(oneTreatIndex, 1);
+          oneTreat.element.remove();
+          // End the game if lives reach zero
+        }
       }
     });
   }
+
   gameOver() {
     console.log("Game Over triggered");
     console.log("Final Score:", this.score);

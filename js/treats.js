@@ -18,6 +18,7 @@ class Treat {
       "/kitty-mission-keep-baby-happy/images/toy_blue.png",
       "/kitty-mission-keep-baby-happy/images/heart.png",
       "/kitty-mission-keep-baby-happy/images/fish_toy1.png",
+      "/kitty-mission-keep-baby-happy/images/happy_baby.png",
     ];
     // Select a random image for the obstacle
     const randomImageIndex = Math.floor(Math.random() * images.length);
@@ -34,7 +35,8 @@ class Treat {
     this.element.style.top = `${this.top}px`;
     this.element.style.left = `${this.left}px`;
 
-    //add the obstacle to the screen
+
+    //add the treat to the screen
     this.gameScreen.appendChild(this.element);
   }
   // it does not have directionX or directionY, only falls down
