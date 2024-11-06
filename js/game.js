@@ -67,9 +67,10 @@ class Game {
               which are useful to add obstacles every n frame.*/
     this.frames = 0;
     //adding audio effects
-    this.purr = new Audio("../audio/purr.mp3");
-    this.angry = new Audio("../audio/angry.mp3");
-    this.laugh = new Audio("../audio/laugh.mp3");
+    this.purr = new Audio("audio/purr.mp3");
+    this.angry = new Audio("audio/angry.mp3");
+    this.laugh = new Audio("audio/laugh.mp3");
+    console.log(this.laugh.src); // Check the file path
   }
 
   start() {
@@ -146,6 +147,9 @@ class Game {
         oneObstacle.element.remove();
         //play angry sound on collision
         this.angry.play();
+        this.angry.play().catch((error) => {
+          console.error("Error playing angry sound:", error);
+        });
 
         // End the game if lives reach zero
         if (this.lives === 0) {
@@ -172,13 +176,16 @@ class Game {
       //remove the treat from the DOM
       if (treatHitSashi) {
         if (isSpecialTreat && this.lives < 3) {
-          console.log("Collision with treat detected");
+          console.log("Collision with special treat detected");
           this.lives += 1;
           this.livesElement.innerText = this.lives;
           this.treats.splice(oneTreatIndex, 1);
           oneTreat.element.remove();
           // play laughing sound when colliding with a special treat
           this.laugh.play();
+          this.laugh.play().catch((error) => {
+            console.error("Error playing laugh sound:", error);
+          });
         } else {
           console.log("Collision with treat detected");
           // - 1 life
