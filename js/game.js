@@ -66,6 +66,10 @@ class Game {
     /*This counts the number of frames that has passed since the game started, 
               which are useful to add obstacles every n frame.*/
     this.frames = 0;
+    //adding audio effects
+    this.purr = new Audio("../audio/purr.mp3");
+    this.angry = new Audio("../audio/angry.mp3");
+    this.laugh = new Audio("../audio/laugh.mp3");
   }
 
   start() {
@@ -140,6 +144,9 @@ class Game {
         //splice the obstacle out of the array
         this.obstacles.splice(oneObstacleIndex, 1);
         oneObstacle.element.remove();
+        //play angry sound on collision
+        this.angry.play();
+
         // End the game if lives reach zero
         if (this.lives === 0) {
           this.isGameover = true;
@@ -164,12 +171,14 @@ class Game {
       //if the obstacle hits Sashi, add a score point, remove the treat from the array and
       //remove the treat from the DOM
       if (treatHitSashi) {
-        if (isSpecialTreat) {
+        if (isSpecialTreat && this.lives < 3) {
           console.log("Collision with treat detected");
           this.lives += 1;
           this.livesElement.innerText = this.lives;
           this.treats.splice(oneTreatIndex, 1);
           oneTreat.element.remove();
+          // play laughing sound when colliding with a special treat
+          this.laugh.play();
         } else {
           console.log("Collision with treat detected");
           // - 1 life
@@ -179,7 +188,9 @@ class Game {
           //splice the treat out of the array
           this.treats.splice(oneTreatIndex, 1);
           oneTreat.element.remove();
-          // End the game if lives reach zero
+          // play purr sound when colliding with a treat
+          this.purr.play();
+          this.purr.volume = 1.0;
         }
       }
     });
