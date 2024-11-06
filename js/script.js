@@ -60,6 +60,10 @@ window.onload = function () {
 
     // Reset and start a new game
     myGame = new Game();
+    myGame.score = 0;
+    myGame.lives = 3;
+    document.getElementById("score").innerText = myGame.score;
+    document.getElementById("lives").innerText = myGame.lives;
     myGame.start();
   }
   function clearGameScreen() {
