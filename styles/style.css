@@ -81,6 +81,10 @@ body {
   font-size: 2rem;
 }
 
+#lives img{
+  height: 40 px;
+}
+
 #final-stats {
   display: none;
   flex-direction: column;
@@ -94,17 +98,42 @@ body {
   border-radius: 20px;
   font-family: inherit;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
-#high-scores-title {
+#final-stats h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(4, 97, 113);
+  margin-bottom: 10px;
+}
+
+#high-scores {
   font-family: inherit;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  list-style-type: decimal;
+  padding-left: 20px; /* Padding for list alignment */
+  margin: 0;
+}
+
+#high-scores ol {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 #high-scores li {
   margin: 8px 0; /* Increased spacing between list items */
+  font-size: 1.7rem;
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+#high-scores li:before {
+  border-radius: 1ch;
+  padding-inline: 1ch;
+  margin-inline-end: 1ch;
 }
 
 /* Optional: Styling for text inside each score item */

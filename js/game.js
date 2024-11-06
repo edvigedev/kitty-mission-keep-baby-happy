@@ -76,6 +76,8 @@ class Game {
     this.angry.volume = 0.2;
     this.laugh = new Audio("audio/laugh.mp3");
     this.laugh.volume = 0.5;
+    this.cry = new Audio("audio/cry.mp3");
+    this.cry.volume = 0.2;
 
     //adding audio background
     this.backGroundMusic = new Audio("audio/background.mp3");
@@ -93,9 +95,15 @@ class Game {
     this.startScreen.style.display = "none";
     //
     this.gameScreen.style.display = "flex";
+    //play background music
+    this.backGroundMusic.loop = true;
     this.backGroundMusic.play();
+
     this.isGameover = false;
     this.frames = 0;
+
+    //add heart elements to the lives
+    this.updateLifeHearts();
 
     /*start the game loop, aka turn on the engine
             The setInterval function creates a loop that calls this.gameLoop() every 
@@ -122,11 +130,11 @@ class Game {
 
     //this adds a new obstacle to the array every so many frames
 
-    if (this.frames % 220 === 0) {
+    if (this.frames % 100 === 0) {
       this.obstacles.push(new Obstacle());
     }
 
-    if (this.frames % 120 === 0) {
+    if (this.frames % 100 === 0) {
       this.treats.push(new Treat());
     }
   }
@@ -152,8 +160,10 @@ class Game {
         console.log("Collision with obstacle detected");
         // - 1 life
         this.lives--;
-        //update the lives DOM to the new value
+        //update the lives DOM to the new value (this is for number as a life)
         this.livesElement.innerText = this.lives;
+        //update the lives DOM with an image
+        this.updateLifeHearts();
         //splice the obstacle out of the array
         this.obstacles.splice(oneObstacleIndex, 1);
         oneObstacle.element.remove();
@@ -191,6 +201,7 @@ class Game {
           console.log("Collision with special treat detected");
           this.lives += 1;
           this.livesElement.innerText = this.lives;
+          this.updateLifeHearts();
           this.treats.splice(oneTreatIndex, 1);
           oneTreat.element.remove();
           // play laughing sound when colliding with a special treat
@@ -226,6 +237,9 @@ class Game {
     //update the final stats
     this.finalscoreElement.innerText = this.score;
     this.finalLivesElement.innerText = this.lives;
+
+    //make baby cry
+    this.cry.play();
 
     //storing the high scores, we cannot use arrays, this.score has to be stringified
 
@@ -282,6 +296,15 @@ class Game {
     // // Display the final score and lives on the end screen
     // this.scoreElement.innerText = this.score;
     // this.livesElement.innerText = this.lives;
+  }
+
+  updateLifeHearts() {
+    this.livesElement.innerHTML = "";
+    for (let i = 0; i < this.lives; i++) {
+      const imgElement = document.createElement("img");
+      imgElement.src = "images/life.png";
+      this.livesElement.appendChild(imgElement);
+    }
   }
 }
 
