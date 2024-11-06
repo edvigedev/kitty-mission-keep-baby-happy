@@ -14,6 +14,10 @@ class Game {
     this.endScreen = document.getElementById("end-screen");
     this.scoreElement = document.getElementById("score");
     this.livesElement = document.getElementById("lives");
+    this.highScoresElement = document.getElementById("high-scores");
+    this.finalscoreElement = document.getElementById("final-score");
+    this.finalLivesElement = document.getElementById("final-lives");
+    this.finalStatsElement = document.getElementById("final-stats");
 
     /*Initialise the  player
                 This initializes the player object using the Player class. 
@@ -118,7 +122,7 @@ class Game {
 
     //this adds a new obstacle to the array every so many frames
 
-    if (this.frames % 180 === 0) {
+    if (this.frames % 220 === 0) {
       this.obstacles.push(new Obstacle());
     }
 
@@ -217,10 +221,67 @@ class Game {
     console.log("Final Lives:", this.lives);
     this.gameScreen.style.display = "none";
     this.endScreen.style.display = "flex";
+    this.finalStatsElement.style.display = "flex";
 
-    // Display the final score and lives on the end screen
-    this.scoreElement.innerText = this.score;
-    this.livesElement.innerText = this.lives;
+    //update the final stats
+    this.finalscoreElement.innerText = this.score;
+    this.finalLivesElement.innerText = this.lives;
+
+    //storing the high scores, we cannot use arrays, this.score has to be stringified
+
+    //we have to convert into an array first, and then push
+    // Safely retrieve high scores from localStorage or initialize as an empty array
+    // Retrieve high scores from localStorage, or initialize as an empty array if not found
+    let scoresInLocalStorage;
+    const storedScores = localStorage.getItem("highScores");
+
+    if (storedScores) {
+      try {
+        scoresInLocalStorage = JSON.parse(storedScores);
+      } catch (error) {
+        console.error("Error parsing highScores from localStorage:", error);
+        scoresInLocalStorage = []; // Fallback to an empty array on error
+      }
+    } else {
+      scoresInLocalStorage = []; // Initialize as an empty array if not present
+    }
+
+    // Add the current score to the array and sort the scores
+    scoresInLocalStorage.push(parseInt(this.score));
+    scoresInLocalStorage.sort((a, b) => b - a);
+    const topThree = scoresInLocalStorage.slice(0, 3);
+
+    // Save updated top three scores back to local storage
+    localStorage.setItem("highScores", JSON.stringify(topThree));
+
+    // Add high scores to the DOM
+    const highScoresList = document.getElementById("high-scores");
+    highScoresList.innerHTML = ""; // Clear any existing list items
+
+    // if (scoresInLocalStorage) {
+    //   //this is AFTER the first game, when there are scores
+    //   scoresInLocalStorage.push(this.score);
+    //   //after pushing, we sort descending
+    //   scoresInLocalStorage.sort((a, b) => b - a);
+    //   //after sorting, splice only first 3 for the top 3 scores
+    //   topThree = scoresInLocalStorage.slice(0, 3);
+    //   localStorage.setItem("highScores", JSON.stringify(topThree));
+    // } else {
+    //   //this is the fist game with no scores in the local storage
+    //   const currentScore = JSON.stringify(this.score);
+    //   localStorage.setItem("highScores", currentScore);
+    // }
+
+    // after setting all the scores, add the scores to the DOM
+    topThree.forEach((oneScore) => {
+      const liElement = document.createElement("li");
+      liElement.innerText = oneScore;
+      this.highScoresElement.appendChild(liElement);
+    });
+
+    // // Display the final score and lives on the end screen
+    // this.scoreElement.innerText = this.score;
+    // this.livesElement.innerText = this.lives;
   }
 }
 
