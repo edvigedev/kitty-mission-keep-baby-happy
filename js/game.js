@@ -185,8 +185,6 @@ class Game {
       }
     });
 
-
-
     this.projectiles.forEach((oneProjectile, projectileIndex) => {
       oneProjectile.move();
       this.obstacles.forEach((oneObstacle, obstacleIndex) => {

@@ -42,7 +42,7 @@ class Treat {
   // it does not have directionX or directionY, only falls down
   move() {
     //this is non-responsive to keyboard and it always has to be falling.
-    this.top += 3;
+    this.top += 8;
     this.updatePosition();
   }
 

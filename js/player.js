@@ -11,8 +11,8 @@ class Player {
     this.top = top;
     this.left = left;
     //leave width and height out as they will always be the same
-    this.width = 240;
-    this.height = 200;
+    this.width = 150;
+    this.height = 150;
     //we need the variables direction x and direction y for directions
     this.directionX = 0; // controls Sashi moving left right
     this.directionY = 0; // constrols Sashi moving up and down
@@ -26,8 +26,6 @@ class Player {
     this.element.style.width = `${this.width}px`;
     this.element.style.top = `${this.top}px`;
     this.element.style.left = `${this.left}px`;
-
-    
 
     //add the player, Sashi, to the screen
     this.gameScreen.appendChild(this.element);

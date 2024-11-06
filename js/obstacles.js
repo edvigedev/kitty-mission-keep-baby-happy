@@ -3,8 +3,8 @@ class Obstacle {
     this.gameScreen = document.getElementById("game-screen");
 
     // Define width and height for the obstacle
-    this.width = 180;
-    this.height = 150;
+    this.width = 140;
+    this.height = 120;
 
     // Set the initial position at the top of the screen
     this.top = -200; // Start dropping from the top, smoothly
@@ -40,7 +40,7 @@ class Obstacle {
   // it does not have directionX or directionY, only falls down
   move() {
     //this is non-responsive to keyboard and it always has to be falling.
-    this.top += 6;
+    this.top += 8;
     this.updatePosition();
   }
 
