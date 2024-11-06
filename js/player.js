@@ -27,6 +27,8 @@ class Player {
     this.element.style.top = `${this.top}px`;
     this.element.style.left = `${this.left}px`;
 
+    
+
     //add the player, Sashi, to the screen
     this.gameScreen.appendChild(this.element);
   }
@@ -87,5 +89,3 @@ class Player {
     }
   }
 }
-
-

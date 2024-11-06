@@ -85,6 +85,9 @@ class Game {
     this.backGroundMusic = new Audio("audio/background.mp3");
     // this.backgroundMusic.loop = true; // Set it to loop continuously
     this.backGroundMusic.volume = 0.1; // avoid the full volume
+
+    //this establishes if the player can shoot or not
+    this.canShoot = true;
   }
 
   start() {
@@ -181,6 +184,8 @@ class Game {
         }
       }
     });
+
+
 
     this.projectiles.forEach((oneProjectile, projectileIndex) => {
       oneProjectile.move();

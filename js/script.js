@@ -32,9 +32,19 @@ window.onload = function () {
       myGame.player.directionY = 5;
     }
     if (event.code === "Space") {
-      const projectileLeft = myGame.player.left + 32;
-      const projectileTop = myGame.player.top - 32;
-      myGame.projectiles.push(new Projectile(projectileLeft, projectileTop));
+      //check if player can shoot
+      if (myGame.canShoot) {
+        const projectileLeft = myGame.player.left + 32;
+        const projectileTop = myGame.player.top - 32;
+        myGame.projectiles.push(new Projectile(projectileLeft, projectileTop));
+        //start the coolDown
+        myGame.canShoot = false;
+
+        //reset canShoot after 5 seconds
+        setTimeout(() => {
+          myGame.canShoot = true;
+        }, 5000);
+      }
     }
   });
   //keyup for listening to keyboard
