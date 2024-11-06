@@ -3,8 +3,8 @@ class Treat {
     this.gameScreen = document.getElementById("game-screen");
 
     // Define width and height for the obstacle
-    this.width = 180;
-    this.height = 150;
+    this.width = 90;
+    this.height = 120;
 
     // Set the initial position at the top of the screen
     this.top = -200; // Start dropping from the top, smoothly
@@ -17,8 +17,9 @@ class Treat {
     const images = [
       "/kitty-mission-keep-baby-happy/images/toy_blue.png",
       "/kitty-mission-keep-baby-happy/images/heart.png",
-      "/kitty-mission-keep-baby-happy/images/fish_toy1.png",
+      "/kitty-mission-keep-baby-happy/images/fish_toy2.png",
       "/kitty-mission-keep-baby-happy/images/happy_baby.png",
+      "/kitty-mission-keep-baby-happy/images/toy_green.png",
     ];
     // Select a random image for the obstacle
     const randomImageIndex = Math.floor(Math.random() * images.length);
@@ -34,7 +35,6 @@ class Treat {
     this.element.style.width = `${this.width}px`;
     this.element.style.top = `${this.top}px`;
     this.element.style.left = `${this.left}px`;
-
 
     //add the treat to the screen
     this.gameScreen.appendChild(this.element);

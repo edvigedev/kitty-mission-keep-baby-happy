@@ -69,8 +69,14 @@ class Game {
     //adding audio effects
     this.purr = new Audio("audio/purr.mp3");
     this.angry = new Audio("audio/angry.mp3");
+    this.angry.volume = 0.2;
     this.laugh = new Audio("audio/laugh.mp3");
-    console.log(this.laugh.src); // Check the file path
+    this.laugh.volume = 0.5;
+
+    //adding audio background
+    this.backGroundMusic = new Audio("audio/background.mp3");
+    // this.backgroundMusic.loop = true; // Set it to loop continuously
+    this.backGroundMusic.volume = 0.1; // avoid the full volume
   }
 
   start() {
@@ -83,6 +89,7 @@ class Game {
     this.startScreen.style.display = "none";
     //
     this.gameScreen.style.display = "flex";
+    this.backGroundMusic.play();
     this.isGameover = false;
     this.frames = 0;
 
@@ -106,6 +113,7 @@ class Game {
     if (this.isGameover) {
       clearInterval(this.gameIntervalId);
       this.gameOver();
+      this.backGroundMusic.pause();
     }
 
     //this adds a new obstacle to the array every so many frames
@@ -209,6 +217,7 @@ class Game {
     console.log("Final Lives:", this.lives);
     this.gameScreen.style.display = "none";
     this.endScreen.style.display = "flex";
+
     // Display the final score and lives on the end screen
     this.scoreElement.innerText = this.score;
     this.livesElement.innerText = this.lives;
