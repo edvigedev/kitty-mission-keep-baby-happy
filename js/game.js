@@ -43,7 +43,9 @@ class Game {
                 game screen where obstacles will appear.*/
     this.obstacles = [new Obstacle()];
     this.treats = [new Treat()];
+    this.projectiles = [];
     // this.obstacles = [new Obstacle(this.gameScreen)];
+    //
 
     /*These properties keep track of the player’s score and remaining lives.
                 The game starts with a score of 0 and 3 lives.These values are  updated 
@@ -178,6 +180,23 @@ class Game {
           this.isGameover = true;
         }
       }
+    });
+
+    this.projectiles.forEach((oneProjectile, projectileIndex) => {
+      oneProjectile.move();
+      this.obstacles.forEach((oneObstacle, obstacleIndex) => {
+        //check if the projectile collide with the obstacle
+        if (oneProjectile.didCollide(oneObstacle)) {
+          this.score += 2;
+          //update the score DOM to the new value
+          this.scoreElement.innerText = this.score;
+          //splice the projectile and obstacle out of the array
+          this.projectiles.splice(projectileIndex, 1);
+          oneProjectile.element.remove();
+          this.obstacles.splice(obstacleIndex, 1);
+          oneObstacle.element.remove();
+        }
+      });
     });
 
     this.treats.forEach((oneTreat, oneTreatIndex) => {

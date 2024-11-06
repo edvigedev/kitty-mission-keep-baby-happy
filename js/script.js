@@ -31,6 +31,11 @@ window.onload = function () {
     if (event.code === "ArrowDown") {
       myGame.player.directionY = 5;
     }
+    if (event.code === "Space") {
+      const projectileLeft = myGame.player.left + 32;
+      const projectileTop = myGame.player.top - 32;
+      myGame.projectiles.push(new Projectile(projectileLeft, projectileTop));
+    }
   });
   //keyup for listening to keyboard
   document.addEventListener("keyup", () => {

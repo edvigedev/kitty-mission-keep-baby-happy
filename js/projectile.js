@@ -3,32 +3,18 @@ class Projectile {
     this.gameScreen = document.getElementById("game-screen");
 
     // Define width and height for the obstacle
-    this.width = 180;
-    this.height = 150;
+    this.width = 80;
+    this.height = 50;
 
     // Set the initial position at the top of the screen
     this.top = positionY; //
     this.left = positionX;
 
-    // Dynamically set the left position based on the screen width
-    const screenWidth = this.gameScreen.clientWidth;
-    this.left = Math.floor(Math.random() * (screenWidth - this.width)); // Random position across screen width
-
-    //Array of image paths for different obstacle images
-    const images = [
-      "/kitty-mission-keep-baby-happy/images/panettone.png",
-      "/kitty-mission-keep-baby-happy/images/coffee.png",
-      "/kitty-mission-keep-baby-happy/images/chocolate.png",
-    ];
-    // Select a random image for the obstacle
-    const randomImageIndex = Math.floor(Math.random() * images.length);
-    const selectedImage = images[randomImageIndex];
-
     //.src adds the path to the image, since it is an argument we can
     //change it, aka different cars every time the game starts
     //creating the obstacle
     this.element = document.createElement("img");
-    this.element.src = selectedImage;
+    this.element.src = "images/diaper.png";
     this.element.style.position = "absolute";
     this.element.style.height = `${this.height}px`;
     this.element.style.width = `${this.width}px`;
@@ -50,5 +36,21 @@ class Projectile {
   }
   isOutofScreen() {
     return this.left > this.gameScreen.clientWidth;
+  }
+
+  didCollide(obstacle) {
+    const playerRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
+
+    if (
+      playerRect.left < obstacleRect.right &&
+      playerRect.right > obstacleRect.left &&
+      playerRect.top < obstacleRect.bottom &&
+      playerRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
