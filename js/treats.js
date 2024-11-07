@@ -2,7 +2,7 @@ class Treat {
   constructor() {
     this.gameScreen = document.getElementById("game-screen");
 
-    // Define width and height for the obstacle
+    // Define width and height for the treat
     this.width = 90;
     this.height = 120;
 
@@ -11,9 +11,11 @@ class Treat {
 
     // Dynamically set the left position based on the screen width
     const screenWidth = this.gameScreen.clientWidth;
-    this.left = Math.floor(Math.random() * (screenWidth - this.width)); // Random position across screen width
+    this.left = Math.floor(
+      Math.random() * Math.floor(screenWidth - this.width)
+    ); // Random position across screen width
 
-    //Array of image paths for different obstacle images
+    //Array of image paths for different treats images
     const images = [
       "/kitty-mission-keep-baby-happy/images/toy_blue.png",
       "/kitty-mission-keep-baby-happy/images/heart.png",
@@ -21,13 +23,13 @@ class Treat {
       "/kitty-mission-keep-baby-happy/images/happy_baby.png",
       "/kitty-mission-keep-baby-happy/images/toy_green.png",
     ];
-    // Select a random image for the obstacle
+    // Select a random image for the treat
     const randomImageIndex = Math.floor(Math.random() * images.length);
     const selectedImage = images[randomImageIndex];
 
     //.src adds the path to the image, since it is an argument we can
     //change it, aka different cars every time the game starts
-    //creating the obstacle
+    //creating the treat
     this.element = document.createElement("img");
     this.element.src = selectedImage;
     this.element.style.position = "absolute";
@@ -48,8 +50,5 @@ class Treat {
 
   updatePosition() {
     this.element.style.top = `${this.top}px`;
-  }
-  isOutofScreen() {
-    return this.left > this.gameScreen.clientWidth;
   }
 }

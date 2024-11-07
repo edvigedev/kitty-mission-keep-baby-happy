@@ -3,8 +3,8 @@ class Projectile {
     this.gameScreen = document.getElementById("game-screen");
 
     // Define width and height for the obstacle
-    this.width = 80;
-    this.height = 50;
+    this.width = 30;
+    this.height = 20;
 
     // Set the initial position at the top of the screen
     this.top = positionY; //
@@ -33,9 +33,6 @@ class Projectile {
 
   updatePosition() {
     this.element.style.top = `${this.top}px`;
-  }
-  isOutofScreen() {
-    return this.left > this.gameScreen.clientWidth;
   }
 
   didCollide(obstacle) {

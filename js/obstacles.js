@@ -3,15 +3,17 @@ class Obstacle {
     this.gameScreen = document.getElementById("game-screen");
 
     // Define width and height for the obstacle
-    this.width = 140;
-    this.height = 120;
+    this.width = 130;
+    this.height = 110;
 
     // Set the initial position at the top of the screen
     this.top = -200; // Start dropping from the top, smoothly
 
     // Dynamically set the left position based on the screen width
     const screenWidth = this.gameScreen.clientWidth;
-    this.left = Math.floor(Math.random() * (screenWidth - this.width)); // Random position across screen width
+    this.left = Math.floor(
+      Math.random() * Math.floor(screenWidth - this.width)
+    ); // Random position across screen width
 
     //Array of image paths for different obstacle images
     const images = [
@@ -46,8 +48,5 @@ class Obstacle {
 
   updatePosition() {
     this.element.style.top = `${this.top}px`;
-  }
-  isOutofScreen() {
-    return this.left > this.gameScreen.clientWidth;
   }
 }
