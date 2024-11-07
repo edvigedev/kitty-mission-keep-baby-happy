@@ -27,7 +27,6 @@ With each treat and obstacle Sashi manages to shoot, your points will rack up!
 
 You can play the game online, hosted for free on GitHub Pages. [Click here to play Kitty Mission: Keep Baby Happy](https://edvigedev.github.io/kitty-mission-keep-baby-happy/).
 
-
 ## Game Rules
 
 In **Kitty Mission: Keep Baby Happy**, the main goal is to **accumulate as many points as possible** by:
@@ -54,14 +53,12 @@ When Sashi loses all lives, the game ends, displaying the **final score and stat
 
   **Note**: Shooting obstacles grants double points and causes them to shatter into particles.
 
-
 ## Game Mechanics
 
 - **Collision with Obstacles**: If Sashi collides with an obstacle, he loses a life, accompanied by an “angry cat” sound effect. Losing all lives ends the game.
 - **Shooting Obstacles**: Shooting an obstacle breaks it into particles, removes it from the screen, and grants double points.
 - **Collecting Treats**: Each treat Sashi collects gives him one point.
 - **Baby Smiley Faces**: Restore a life if missing, or add a point if lives are full, accompanied by a playful baby laugh sound.
-
 
 ## Technologies Used
 
