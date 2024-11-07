@@ -3,8 +3,15 @@ class Treat {
     this.gameScreen = document.getElementById("game-screen");
 
     // Define width and height for the treat
-    this.width = 90;
-    this.height = 120;
+
+    const windowWidth = window.innerWidth; // Use viewport width
+    const treatSize = windowWidth * 0.05; // 5% of screen width
+
+    this.width = treatSize;
+    this.height = treatSize + windowWidth * 0.01; // Different values for baby face
+
+    // this.width = 90;
+    // this.height = 120;
 
     // Set the initial position at the top of the screen
     this.top = -200; // Start dropping from the top, smoothly

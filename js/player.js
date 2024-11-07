@@ -10,9 +10,13 @@ class Player {
     //where do you want the player to be positioned
     this.top = top;
     this.left = left;
-    //leave width and height out as they will always be the same
-    this.width = 100;
-    this.height = 100;
+    //player's dimensions
+    const screenWidth = window.innerWidth; // Use viewport width
+    const playerSize = screenWidth * 0.1; // 10% of screen width
+
+    this.width = playerSize;
+    this.height = playerSize; // Same value for width and height to keep square
+
     //we need the variables direction x and direction y for directions
     this.directionX = 0; // controls Sashi moving left right
     this.directionY = 0; // constrols Sashi moving up and down
