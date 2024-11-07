@@ -4,14 +4,14 @@ class Projectile {
 
     // Define width and height for the obstacle
 
-    const windowWidth = window.innerWidth; // Use viewport width
-    const treatSize = windowWidth * 0.03; // 5% of screen width
+    // const windowWidth = window.innerWidth; // Use viewport width
+    // const treatSize = windowWidth * 0.03; // 5% of screen width
 
-    this.width = treatSize;
-    this.height = treatSize; // Same value for width and height to keep square
+    // this.width = treatSize;
+    // this.height = treatSize; // Same value for width and height to keep square
 
-    // this.width = 30;
-    // this.height = 20;
+    this.width = 40;
+    this.height = 40;
 
     // Set the initial position at the top of the screen
     this.top = positionY; //

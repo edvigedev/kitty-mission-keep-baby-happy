@@ -4,14 +4,14 @@ class Obstacle {
 
     // Define width and height for the obstacle
 
-    const windowWidth = window.innerWidth; // Use viewport width
-    const obstaclesSize = windowWidth * 0.1; // 10% of screen width
+    // const windowWidth = window.innerWidth; // Use viewport width
+    // const obstaclesSize = windowWidth * 0.1; // 10% of screen width
 
-    this.width = obstaclesSize;
-    this.height = obstaclesSize; // Same value for width and height to keep square
+    // this.width = obstaclesSize;
+    // this.height = obstaclesSize; // Same value for width and height to keep square
 
-    // this.width = 130;
-    // this.height = 110;
+    this.width = 110;
+    this.height = 110;
 
     // Set the initial position at the top of the screen
     this.top = -200; // Start dropping from the top, smoothly

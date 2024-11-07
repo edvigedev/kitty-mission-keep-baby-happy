@@ -233,11 +233,23 @@ class Game {
   }
 
   //create the particles at specific coordinates
-  createParticles(x, y) {
+  createParticles(collisionX, collisionY) {
+    const gameScreenRect = this.gameScreen.getBoundingClientRect();
+
+    // // Adjust collision position relative to gameScreen's top-left corner
+    // const adjustedX = collisionX - gameScreenRect.left;
+    // const adjustedY = collisionY - gameScreenRect.top;
+
     const particleCount = 10; // Number of particles
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement("div");
       particle.classList.add("particle");
+      // Set particle to appear at the collision point directly
+      particle.style.left = `${collisionX}px`;
+      particle.style.top = `${collisionY}px`;
+
+      // particle.style.left = `${collisionX}px`;
+      // particle.style.top = `${collisionY}px`;
       this.gameScreen.appendChild(particle); // Append particle to the game screen
 
       //randomize particle movement
