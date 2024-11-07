@@ -193,6 +193,19 @@ class Game {
           this.score += 2;
           //update the score DOM to the new value
           this.scoreElement.innerText = this.score;
+
+          //get collision position
+          // Get collision position
+          const collisionX =
+            oneObstacle.element.offsetLeft +
+            oneObstacle.element.offsetWidth / 2;
+          const collisionY =
+            oneObstacle.element.offsetTop +
+            oneObstacle.element.offsetHeight / 2;
+
+          // Trigger particle effect at collision point
+          this.createParticles(collisionX, collisionY);
+
           //splice the projectile and obstacle out of the array
           this.projectiles.splice(projectileIndex, 1);
           oneProjectile.element.remove();
@@ -246,6 +259,50 @@ class Game {
         }
       }
     });
+  }
+
+  //create the particles
+  createParticles(x, y) {
+    const particleCount = 10; // Number of particles
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement("div");
+      particle.classList.add("particle");
+      this.gameScreen.appendChild(particle); // Append particle to the game screen
+
+      //randomize particle movement
+
+      //Random direction: multiplying Math.random by 2 * Math.PI (about 6.283) converts it to an angle in radians between 0 and 2π,
+      //which represents a full circle in trigonometry, and the direction of the movements of the particles
+      //the direction is anywhere in a full 360 degrees circle
+
+      const angle = Math.random() * 2 * Math.PI;
+      const speed = Math.random() * 8 + 1; // Random speed between 1 and 9
+
+      //to move the particles outward of the collision point
+      //we multiply the speed and the vectors
+      const velocityX = Math.cos(angle) * speed;
+      const velocityY = Math.sin(angle) * speed;
+
+      // Apply the particle animation
+      particle.animate(
+        [
+          { transform: `translate(0, 0)`, opacity: 1 },
+          {
+            transform: `translate(${velocityX * 20}px, ${velocityY * 20}px)`,
+            opacity: 0,
+          },
+        ],
+        {
+          duration: 500, // Duration in ms
+          easing: "ease-out",
+        }
+      );
+
+      // Remove particle after animation completes
+      setTimeout(() => {
+        particle.remove();
+      }, 500);
+    }
   }
 
   gameOver() {
